@@ -5,7 +5,8 @@ const cors =require("cors");// library for prevent google cross script attack
 const ejs =require('ejs')
 
 
-dotenv.config({path:"./configs/"}) 
+dotenv.config()
+console.log(process.env.port)
 
 
 const dbConnect =require("./configs/db");//import the database connection function
