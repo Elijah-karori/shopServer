@@ -1,0 +1,44 @@
+<!-- views/product.ejs -->
+
+<%- include('partials/header') %>
+
+<div class="container mx-auto">
+  <h1 class="text-3xl font-bold mb-4">Product Management</h1>
+
+  <!-- Create a product form -->
+  <form method="POST" action="/products">
+    <!-- Form fields for product details -->
+    <!-- Example: -->
+    <input type="text" name="name" placeholder="Product Name" required>
+    <!-- Add other fields as per your requirements -->
+    
+    <button type="submit" class="bg-blue-500 text-white py-2 px-4 mt-4">Create Product</button>
+  </form>
+
+  <!-- Display existing products -->
+  <ul>
+    <% data.forEach(product => { %>
+      <li>
+        <h3><%= product.name %></h3>
+        <!-- Display other product details as needed -->
+        <br/>
+        <!-- Edit product form -->
+        <form method="POST" action="/products/<%= product.name %>?_method=PUT">
+          <!-- Form fields for editing product details -->
+          <!-- Example: -->
+          <input type="text" name="name" value="<%= product.name %>" required>
+          <!-- Add other fields as per your requirements -->
+          
+          <button type="submit" class="bg-green-500 text-white py-2 px-4 mt-2">Edit</button>
+        </form>
+
+        <!-- Delete product form -->
+        <form method="POST" action="/products/<%= product.name %>?_method=DELETE">
+          <button type="submit" class="bg-red-500 text-white py-2 px-4 mt-2">Delete</button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
+</div>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,28 @@
+{
+  "name": "shopserver",
+  "version": "1.0.0",
+  "description": "irt is an express app with rest apis for mongodb",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Elijah-karori/shopServer.git"
+  },
+  "author": "elijah karori orito",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Elijah-karori/shopServer/issues"
+  },
+  "homepage": "https://github.com/Elijah-karori/shopServer#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.1.3",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "mongoose": "^7.2.2"
+  }
+}
