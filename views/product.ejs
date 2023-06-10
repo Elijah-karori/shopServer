@@ -1,0 +1,40 @@
+<!-- views/product.ejs -->
+
+<%- include('partials/header') %>
+<%- include('partials/navbar') %>
+<div class="container mx-auto">
+  <h1 style="font-size: 24px; font-weight: bold; margin-bottom: 16px;">Product Management</h1>
+
+  <div>
+    <% if ( !Array.isArray(data)) { %>
+      <div class="card">
+<%- data %>
+      </div>
+     
+   
+    <% } else { %>
+     
+    <% data.forEach(product => { %>
+      <div style="background-color: #f7f7f7; padding: 10px; border-radius: 10px; box-shadow: 2px 3px 2px 1px rgba(48, 45, 45, 0.61); margin: 9px;">
+        <h3 style="font-size: 18px; font-weight: bold; margin-bottom: 5px;"><%= product.name %></h3>
+        <!-- Display other product details as needed -->
+
+        <br/>
+        <div style="padding: 10px;">
+          <!-- Edit product form -->
+          <form  action="/products/<%= product.name %>?_method=PUT" style="display: inline;">
+            <input type="text" name="name" value="<%= product.name %>" required style="margin-right: 8px; padding: 5px; font-size: 14px;">
+            <button type="submit" style="background-color: #333; color: #fff; padding: 10px; border: none; font-size: 16px; font-weight: bold; border-radius: 5px; cursor: pointer; transition: all 0.3s ease;">Edit</button>
+          </form>
+
+          <!-- Delete product form -->
+          <form method="POST" action="/products/<%= product.name %>?_method=DELETE" style="display: inline;">
+            <button type="submit" style="background-color: #333; color: #fff; padding: 10px; border: none; font-size: 16px; font-weight: bold; border-radius: 5px; cursor: pointer; transition: all 0.3s ease;">Delete</button>
+          </form>
+        </div>
+      </div>
+    <% }) %>
+    <% } %>
+  </div>
+</div>
+<%- include('partials/footer') %>

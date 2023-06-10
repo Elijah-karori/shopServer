@@ -13,8 +13,8 @@ const dbConnect =require("./configs/db");//import the database connection functi
 //intiate the express server function
 const app =express(); //express framework for server intialization
 
-const productRoutes = require('./routes/productRoutes');
-const ItemsRouter= require('./routes/itemsRoutes')//items routes
+const productRoutes = require('./routes/productRoutes');//products routes
+const ControlRouter= require('./routes/ControlRoute')//admin routes
 //enable to read .env files
 
 //enable to read the request.body data
@@ -33,9 +33,8 @@ app.get('/',(req, res)=>{
     res.send('welcome')
 })
 //route the user request and response urls
-app.use('/items', ItemsRouter);//items route
-
-app.use('/products', productRoutes);
+app.use('/control', ControlRouter);//Admin route
+app.use('/products', productRoutes);//product route
 
 
 //start the server on port 80
